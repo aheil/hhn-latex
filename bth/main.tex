@@ -1,0 +1,141 @@
+%Dokumentklasse
+\documentclass[a4paper,14pt]{scrreprt}
+\usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm]{geometry}
+%\usepackage[onehalfspacing]{setspace}
+% ============= Packages =============
+
+
+
+
+
+% Dokumentinformationen
+\usepackage[
+	pdftitle={Titel der Abschlussarbeit},
+	pdfsubject={},
+	pdfauthor={Euer Name},
+	pdfkeywords={},	
+	%Links nicht einrahmen
+	hidelinks
+]{hyperref}
+
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+
+\usepackage{nameref}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, subfig}
+\usepackage[export]{adjustbox}
+%Use svgs- couldnt find out how it works
+\usepackage{svg}
+\usepackage{float}
+%Glossary
+\usepackage{booktabs}
+\graphicspath{{img/}}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{acronym}
+\usepackage{listings}
+\lstset{
+basicstyle=\footnotesize\ttfamily,
+% specifies that lines shouldn't overrun the margin
+breaklines=true
+% specified that, if possible, lines should be broken at whitespace
+breakatwhitespace=true 
+}
+
+%Use todo notes in text
+\usepackage{todonotes}
+
+
+% ============= BibLatex =============
+\usepackage[backend=bibtex,style=ieee]{biblatex}
+%Literaturverzeichnis
+\addbibresource{Literatur.bib}
+
+
+% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+%nicht einrücken nach Absatz
+%\setlength{\parindent}{0pt}
+
+
+
+%for glossar usage
+\usepackage[toc]{glossaries}
+\loadglsentries{glossaries.tex}
+
+% ============= Kopf- und Fußzeile =============
+\pagestyle{fancy}
+%
+\lhead{}
+\chead{}
+\rhead{\slshape \leftmark}
+%%
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+%%
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ============= Package Einstellungen & Sonstiges ============= 
+%Besondere Trennungen
+\hyphenation{De-zi-mal-tren-nung I-ner-tial-sen-so-rik Skript-ab-lauf}
+%Damit das Abkürzungsverzeichnis usw. automatisch hinzugefügt wird zum ToC
+\usepackage[nottoc]{tocbibind}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+         
+
+% ============= Dokumentbeginn =============
+
+\begin{document}
+	\emergencystretch 3em 
+%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
+\pagestyle{empty}
+
+\include{titel}
+
+% Beendet eine Seite und erzwingt auf den nachfolgenden Seiten die Ausgabe aller Gleitobjekte (z.B. Abbildungen), die bislang definiert, aber noch nicht ausgegeben wurden. Dieser Befehl fügt, falls nötig, eine leere Seite ein, sodaß die nächste Seite nach den Gleitobjekten eine ungerade Seitennummer hat. 
+\cleardoubleoddpage
+
+% pagestyle für gesamtes Dokument aktivieren
+\pagestyle{fancy}
+
+
+% Danksagung
+\include{danksagung}
+
+%Inhaltsverzeichnis
+\tableofcontents
+
+%Verzeichnis aller Bilder
+\listoffigures
+
+%Verzeichnis aller Tabellen
+\listoftables
+
+%Abkürzungsverzeichnis
+\include{abkuerzungsverzeichnis}
+
+\include{einleitung}
+\include{grundlagen}
+
+\include{analyse}
+
+\include{konzeption}
+
+\include{diskussion}
+\newpage
+
+%\printbibliography[title=Literaturverzeichnis]
+%\printglossary[title = Glossar]
+\include{anhang}
+\include{eidesstattlicheerkl}
+\end{document}
